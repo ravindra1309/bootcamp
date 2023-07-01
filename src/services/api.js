@@ -23,3 +23,18 @@ export const searchNews = async (query) => {
     throw new Error('Failed to search news articles');
   }
 };
+
+
+export const getArticleById = async (id) => {
+  try {
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch article by ID');
+    }
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw new Error('Failed to fetch article by ID');
+  }
+};
